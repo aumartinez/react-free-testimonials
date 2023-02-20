@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Testimony from './components/testimonials.js'
+import Seed from './assets/seed'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {  
+  render() {
+    return (
+      <div className='app'>
+        <div className='container'>
+          <h1>
+            Here is what our alumni say about freeCodeCamp:
+          </h1>
+          {
+            Seed.map((item, idx) => {
+              return (
+                <Testimony 
+                key = {idx}
+                name = {item.name}
+                country = {item.country}
+                img= {item.img}
+                position = {item.position}
+                company = {item.company}
+                quote = {item.quote()}
+                />
+              )
+            })
+          }
+        </div>      
+      </div>
+    );
+  }
 }
 
 export default App;
